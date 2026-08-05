@@ -17,7 +17,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 
 	var direction := Input.get_axis("move_left", "move_right")
-	if direction:
+	if direction and not dying:
 		velocity.x = direction * SPEED
 		animated_sprite_2d.flip_h = (direction < 0)
 	else:

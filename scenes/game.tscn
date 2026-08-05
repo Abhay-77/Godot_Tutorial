@@ -345,3 +345,6 @@ theme_override_fonts/font = ExtResource("9_0tnpc")
 theme_override_font_sizes/font_size = 8
 text = "Congratulations!
 You have collected x coins"
+
+[node name="Slime2" parent="." unique_id=1679565386 instance=ExtResource("6_p57ef")]
+position = Vector2(104, 79)
