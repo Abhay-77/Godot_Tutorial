@@ -5,6 +5,8 @@ const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
 const BOUNCE_VELOCITY = -200
 
+var dying = false
+
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 func _physics_process(delta: float) -> void:
@@ -21,7 +23,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
-	if is_on_floor():
+	if is_on_floor() and not dying:
 		if direction:
 			animated_sprite_2d.play("run")
 		else:
@@ -34,3 +36,7 @@ func _physics_process(delta: float) -> void:
 
 func bounce():
 	velocity.y = BOUNCE_VELOCITY
+
+func die():
+	dying = true
+	animated_sprite_2d.play("die")
