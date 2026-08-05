@@ -15,3 +15,10 @@ func _process(delta: float) -> void:
 		direction = 1
 		animated_sprite_2d.flip_h = false
 	position.x += direction * SPEED * delta
+
+func die():
+	queue_free()
+
+func _on_stomp_area_body_entered(body: Node2D) -> void:
+	body.bounce()
+	die()

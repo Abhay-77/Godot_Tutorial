@@ -41,7 +41,11 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ufom"]
-size = Vector2(12, 14)
+size = Vector2(12, 11)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_3ufom"]
+a = Vector2(1, 0)
+b = Vector2(-9, 0)
 
 [node name="Slime" type="Node2D" unique_id=1036301712]
 script = ExtResource("1_n6pvg")
@@ -57,7 +61,7 @@ frame_progress = 0.88418275
 [node name="killzone" parent="." unique_id=813831838 instance=ExtResource("2_n6pvg")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="killzone" unique_id=603398690]
-position = Vector2(0, -7)
+position = Vector2(0, -5.5)
 shape = SubResource("RectangleShape2D_3ufom")
 
 [node name="RayCastRight" type="RayCast2D" parent="." unique_id=185465673]
@@ -67,3 +71,12 @@ target_position = Vector2(12, 0)
 [node name="RayCastLeft" type="RayCast2D" parent="." unique_id=1183615888]
 position = Vector2(0, -7)
 target_position = Vector2(-12, 0)
+
+[node name="StompArea" type="Area2D" parent="." unique_id=537356927]
+position = Vector2(4, -14)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StompArea" unique_id=1958646052]
+shape = SubResource("SegmentShape2D_3ufom")
+
+[connection signal="body_entered" from="StompArea" to="." method="_on_stomp_area_body_entered"]

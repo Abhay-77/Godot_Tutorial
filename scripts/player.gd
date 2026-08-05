@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
+const BOUNCE_VELOCITY = -200
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -26,6 +27,10 @@ func _physics_process(delta: float) -> void:
 		else:
 			animated_sprite_2d.play("idle")
 	else:
-		animated_sprite_2d.play("jump")
+		if velocity.y < 0:
+			animated_sprite_2d.play("jump")
 
 	move_and_slide()
+
+func bounce():
+	velocity.y = BOUNCE_VELOCITY
